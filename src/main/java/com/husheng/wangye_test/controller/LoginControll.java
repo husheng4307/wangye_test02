@@ -75,7 +75,7 @@ public class LoginControll {
                            ){
         request.getSession().removeAttribute("loginUser");
         try {
-            response.sendRedirect("/crud");
+            response.sendRedirect("/");
         } catch (IOException e) {
             e.printStackTrace();
             LOGGER.error("注销失败",e);
