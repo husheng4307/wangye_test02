@@ -8,9 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -25,14 +24,10 @@ public class StudentMathController {
     }
 
     @GetMapping("/studentInfo")
-    public String list(Model model){
+    public String list(HttpServletRequest request){
         List<StudentMathDomain> studentMathAll = studentMathMapper.getStudentMathAll();
-        model.addAttribute("student",studentMathAll);
+        request.setAttribute("student",studentMathAll);
         return "/studentInfo";
     }
 
-    @GetMapping("sss")
-    public String sss(){
-        return "/sss";
-    }
 }
