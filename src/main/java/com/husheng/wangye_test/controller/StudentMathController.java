@@ -1,6 +1,7 @@
 package com.husheng.wangye_test.controller;
 
 
+import com.github.pagehelper.PageHelper;
 import com.husheng.wangye_test.mapper.StudentMathMapper;
 import com.husheng.wangye_test.model.StudentMathDomain;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,7 +26,12 @@ public class StudentMathController {
     }
 
     @GetMapping("/studentInfo")
-    public String list(HttpServletRequest request){
+    public String list(HttpServletRequest request,
+                       @RequestParam(name = "pageNum",required = false,defaultValue = "1")
+                       int pageNum,
+                       @RequestParam(name = "pageSize",required = false,defaultValue = "2")
+                       int pageSize){
+        PageHelper.startPage(pageNum,pageSize);
         List<StudentMathDomain> studentMathAll = studentMathMapper.getStudentMathAll();
         request.setAttribute("student",studentMathAll);
         return "/studentInfo";
