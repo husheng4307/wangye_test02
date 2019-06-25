@@ -1,28 +1,31 @@
 package com.husheng.wangye_test.controller;
 
 
-import com.github.pagehelper.PageHelper;
-import com.husheng.wangye_test.mapper.StudentMathMapper;
+import com.github.pagehelper.PageInfo;
 import com.husheng.wangye_test.model.StudentMathDomain;
+import com.husheng.wangye_test.service.studentMath.StudentMathService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+
 
 @Controller
 public class StudentMathController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentMathController.class);
+
     @Autowired
-    StudentMathMapper studentMathMapper;
+    private StudentMathService studentMathService;
+
 
     @GetMapping("/stu/{id}")
     public StudentMathDomain getStudentById(@PathVariable("id") Integer id){
-        return studentMathMapper.getStudentMathById(id);
+        return studentMathService.getStudentMathById(id);
     }
 
     @GetMapping("/studentInfo")
@@ -31,10 +34,11 @@ public class StudentMathController {
                        int pageNum,
                        @RequestParam(name = "pageSize",required = false,defaultValue = "2")
                        int pageSize){
-        PageHelper.startPage(pageNum,pageSize);
-        List<StudentMathDomain> studentMathAll = studentMathMapper.getStudentMathAll();
-        request.setAttribute("student",studentMathAll);
-        return "/studentInfo";
+
+        PageInfo<StudentMathDomain> studentInfo = studentMathService.getStudentMathAll(pageNum,pageSize);
+        System.out.println(studentInfo);
+        request.setAttribute("student",studentInfo);
+        return "studentInfo";
     }
 
 }
