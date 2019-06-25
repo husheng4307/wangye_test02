@@ -1,6 +1,5 @@
 package com.husheng.wangye_test;
 
-import com.husheng.wangye_test.mapper.UserMapper;
 import com.husheng.wangye_test.utils.utils;
 import org.junit.Test;
 import org.junit.runner.RunWith;

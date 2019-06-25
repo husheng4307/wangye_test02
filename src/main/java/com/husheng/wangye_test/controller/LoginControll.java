@@ -1,14 +1,15 @@
 package com.husheng.wangye_test.controller;
 
 
-import com.husheng.wangye_test.mapper.UserMapper;
 import com.husheng.wangye_test.model.UserDomain;
+import com.husheng.wangye_test.service.user.UserService;
 import com.husheng.wangye_test.utils.utils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,31 +21,15 @@ import java.io.IOException;
 import java.util.Map;
 
 @Controller
-
+@Api("登录相关接口")
 public class LoginControll {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginControll.class);
 
     @Autowired
-    UserMapper userMapper;
+    UserService userService;
 
-//    @PostMapping("/user/login")
-//    public String login(@RequestParam("username") String username,
-//                        @RequestParam("password") String password,
-//                        Map<String, Object> map,
-//                        HttpSession session) {
-//
-//        if (!StringUtils.isEmpty(username) && "123456".equals(password)) {
-//            session.setAttribute("loginUser", username);
-//            return "redirect:/main.html";
-//        } else {
-//
-//            map.put("msg", "用户名密码错误");
-//            map.put("msg", "用户名密码错误");
-//        }
-//
-//    }
-
+    @ApiOperation("登录")
     @PostMapping("/user/login")
     public String toLogin(
             HttpServletRequest request,
@@ -57,7 +42,7 @@ public class LoginControll {
                         HttpSession session
     ){
         String pwd = utils.MD5encode(username+password);
-        UserDomain userInfo = userMapper.getUserByNameAndPassword(username,pwd);
+        UserDomain userInfo = userService.getUserByNameAndPassword(username,pwd);
         if (userInfo==null){
             map.put("msg", "用户名密码错误");
             map.put("msg", "用户名密码错误");
@@ -68,7 +53,7 @@ public class LoginControll {
         }
     }
 
-
+    @ApiOperation("登出")
     @RequestMapping("/user/logout")
     public void toLogout(  HttpServletRequest request,
                            HttpServletResponse response

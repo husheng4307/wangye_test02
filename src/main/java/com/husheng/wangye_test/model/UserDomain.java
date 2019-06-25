@@ -1,9 +1,14 @@
 package com.husheng.wangye_test.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class UserDomain {
 
+    @ApiModelProperty("id")
     private Integer id;
+    @ApiModelProperty("用户名")
     private String username;
+    @ApiModelProperty("密码")
     private String password;
 
     @Override

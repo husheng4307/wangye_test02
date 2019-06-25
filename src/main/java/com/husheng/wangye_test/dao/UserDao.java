@@ -1,4 +1,4 @@
-package com.husheng.wangye_test.mapper;
+package com.husheng.wangye_test.dao;
 
 
 import com.husheng.wangye_test.model.UserDomain;
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface UserMapper {
+public interface UserDao {
 
     @Select("select * from user where id=#{id}")
     public UserDomain getUserById(Integer id);
