@@ -21,4 +21,10 @@ public class UserServiceImpl implements UserService {
     public UserDomain getUserByNameAndPassword(String username, String password) {
         return userDao.getUserByNameAndPassword(username,password);
     }
+
+    @Override
+    public boolean setUserByNameAndPassword(String username, String password) {
+        userDao.setUserByNameAndPassword( username, password);
+        return true;
+    }
 }

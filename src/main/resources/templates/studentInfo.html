@@ -44,8 +44,8 @@
 <!--                        <button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>-->
 <!--                    </td>-->
                 </tr>
-                <a class="btn btn-sm btn-primary" th:href="@{/studentInfo?pageNum=}+${student.pageNum+1}">下一页</a>
-                <a class="btn btn-sm btn-primary" th:href="@{/studentInfo?pageNum=}+${student.pageNum-1}">上一页</a>
+                <a class="btn btn-sm btn-primary" th:href="@{/studentInfo?pageNum=}+${student.nextPage}">下一页</a>
+                <a class="btn btn-sm btn-primary" th:href="@{/studentInfo?pageNum=}+${student.prePage}">上一页</a>
 
                 </tbody>
             </table>
