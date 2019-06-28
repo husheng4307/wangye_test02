@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +30,7 @@ public class LoginControll {
     @Autowired
     UserService userService;
 
-    @ApiOperation("登录")
+    @ApiOperation(value = "登录",httpMethod = "POST",response = String.class)
     @PostMapping("/user/login")
     public String toLogin(
             HttpServletRequest request,
@@ -53,8 +54,8 @@ public class LoginControll {
         }
     }
 
-    @ApiOperation("登出")
-    @RequestMapping("/user/logout")
+    @ApiOperation(value = "登出",httpMethod = "GET")
+    @GetMapping(value = "/user/logout")
     public void toLogout(  HttpServletRequest request,
                            HttpServletResponse response
                            ){

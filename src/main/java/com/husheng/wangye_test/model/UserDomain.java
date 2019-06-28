@@ -1,7 +1,8 @@
 package com.husheng.wangye_test.model;
-
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel("用户类")
 public class UserDomain {
 
     @ApiModelProperty("id")
