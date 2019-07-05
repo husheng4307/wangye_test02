@@ -30,7 +30,7 @@ public class LoginControll {
     @Autowired
     UserService userService;
 
-    @ApiOperation(value = "登录",httpMethod = "POST",response = String.class)
+    @ApiOperation(value = "登录", httpMethod = "POST", response = String.class)
     @PostMapping("/user/login")
     public String toLogin(
             HttpServletRequest request,
@@ -40,31 +40,31 @@ public class LoginControll {
             @RequestParam(name = "password", required = true)
                     String password,
             Map<String, Object> map,
-                        HttpSession session
-    ){
-        String pwd = utils.MD5encode(username+password);
-        UserDomain userInfo = userService.getUserByNameAndPassword(username,pwd);
-        if (userInfo==null){
+            HttpSession session
+    ) {
+        String pwd = utils.MD5encode(username + password);
+        UserDomain userInfo = userService.getUserByNameAndPassword(username, pwd);
+        if (userInfo == null) {
             map.put("msg", "用户名密码错误");
             map.put("msg", "用户名密码错误");
             return "login";
-        }else{
+        } else {
             session.setAttribute("loginUser", username);
             return "redirect:/main.html";
         }
     }
 
-    @ApiOperation(value = "登出",httpMethod = "GET")
+    @ApiOperation(value = "登出", httpMethod = "GET")
     @GetMapping(value = "/user/logout")
-    public void toLogout(  HttpServletRequest request,
-                           HttpServletResponse response
-                           ){
+    public void toLogout(HttpServletRequest request,
+                         HttpServletResponse response
+    ) {
         request.getSession().removeAttribute("loginUser");
         try {
             response.sendRedirect("/");
         } catch (IOException e) {
             e.printStackTrace();
-            LOGGER.error("注销失败",e);
+            LOGGER.error("注销失败", e);
         }
     }
 }

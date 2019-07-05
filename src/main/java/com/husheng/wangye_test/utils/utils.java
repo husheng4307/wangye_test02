@@ -8,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 public class utils {
 
 
-
     public static String MD5encode(String source) {
         if (StringUtils.isBlank(source)) {
             return null;

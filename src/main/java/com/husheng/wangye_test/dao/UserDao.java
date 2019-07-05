@@ -13,7 +13,7 @@ public interface UserDao {
     public UserDomain getUserById(Integer id);
 
     @Select("select * from user where username=#{username} and password=#{password}")
-    public UserDomain getUserByNameAndPassword(String username ,String password);
+    public UserDomain getUserByNameAndPassword(String username, String password);
 
     @Insert("insert into user(username,password) values (#{username},#{password})")
     public void setUserByNameAndPassword(String username, String password);

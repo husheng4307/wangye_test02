@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Api("Student类相关接口")
@@ -28,23 +29,23 @@ public class StudentMathController {
 
     @ApiOperation("按照id号查询")
     @GetMapping("/stu/{id}")
-    public StudentMathDomain getStudentById(@PathVariable("id") Integer id){
+    public StudentMathDomain getStudentById(@PathVariable("id") Integer id) {
         return studentMathService.getStudentMathById(id);
     }
 
     @ApiOperation("查询所有studentMath信息")
     @GetMapping("/studentInfo")
     public String list(HttpServletRequest request,
-                       @ApiParam(name = "pageNum",value = "页数",required = false)
-                       @RequestParam(name = "pageNum",required = false,defaultValue = "1")
-                       int pageNum,
-                       @ApiParam(name = "pageSize",value = "每页条数",required = false)
-                       @RequestParam(name = "pageSize",required = false,defaultValue = "2")
-                       int pageSize){
+                       @ApiParam(name = "pageNum", value = "页数", required = false)
+                       @RequestParam(name = "pageNum", required = false, defaultValue = "1")
+                               int pageNum,
+                       @ApiParam(name = "pageSize", value = "每页条数", required = false)
+                       @RequestParam(name = "pageSize", required = false, defaultValue = "2")
+                               int pageSize) {
 
-        PageInfo<StudentMathDomain> studentInfo = studentMathService.getStudentMathAll(pageNum,pageSize);
+        PageInfo<StudentMathDomain> studentInfo = studentMathService.getStudentMathAll(pageNum, pageSize);
         System.out.println(studentInfo);
-        request.setAttribute("student",studentInfo);
+        request.setAttribute("student", studentInfo);
         return "studentInfo";
     }
 

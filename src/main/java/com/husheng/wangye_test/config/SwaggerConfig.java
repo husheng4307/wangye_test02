@@ -18,14 +18,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.husheng.wangye_test"))
                 .paths(PathSelectors.any())
                 .build();
-            }
+    }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()

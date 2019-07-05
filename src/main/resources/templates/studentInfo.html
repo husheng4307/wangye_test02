@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8">
     <title>StudentInfo</title>
 </head>
 <body>
@@ -39,10 +39,10 @@
                     <td th:text="${stu.Fjob}"></td>
 
 
-<!--                    <td>-->
-<!--                        <a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>-->
-<!--                        <button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>-->
-<!--                    </td>-->
+                    <!--                    <td>-->
+                    <!--                        <a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>-->
+                    <!--                        <button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>-->
+                    <!--                    </td>-->
                 </tr>
                 <a class="btn btn-sm btn-primary" th:href="@{/studentInfo?pageNum=}+${student.nextPage}">下一页</a>
                 <a class="btn btn-sm btn-primary" th:href="@{/studentInfo?pageNum=}+${student.prePage}">上一页</a>

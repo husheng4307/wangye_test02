@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StudentMathService {
 
-     PageInfo<StudentMathDomain> getStudentMathAll(int pageNum , int pageSize);
+    PageInfo<StudentMathDomain> getStudentMathAll(int pageNum, int pageSize);
 
-     StudentMathDomain getStudentMathById(Integer id);
+    StudentMathDomain getStudentMathById(Integer id);
 }

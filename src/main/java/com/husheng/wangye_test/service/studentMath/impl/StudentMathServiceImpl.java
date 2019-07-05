@@ -20,7 +20,7 @@ public class StudentMathServiceImpl implements StudentMathService {
 
     @Override
     public PageInfo<StudentMathDomain> getStudentMathAll(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         List<StudentMathDomain> studentinfo = studentMathDao.getStudentMathAll();
         PageInfo<StudentMathDomain> pageInfo = new PageInfo<>(studentinfo);
         return pageInfo;

@@ -16,7 +16,7 @@ public class WangyeTest02ApplicationTests {
 
 //        @Autowired
 //        UserMapper userMapper;
-        String s="admin11"+"sss";
+        String s = "admin11" + "sss";
         System.out.println(s);
         String pwd = utils.MD5encode(s);
         System.out.println(pwd);

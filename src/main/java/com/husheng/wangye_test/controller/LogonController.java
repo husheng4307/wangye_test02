@@ -26,7 +26,7 @@ public class LogonController {
     UserService userService;
 
     @GetMapping("/user/logon")
-    public String logon(){
+    public String logon() {
         return "logon";
     }
 
@@ -38,16 +38,16 @@ public class LogonController {
                     String username,
             @RequestParam(name = "password", required = true)
                     String password
-    ){
-        if (password.isEmpty()||username.isEmpty()){
-            request.setAttribute("msg","用户名密码错误");
+    ) {
+        if (password.isEmpty() || username.isEmpty()) {
+            request.setAttribute("msg", "用户名密码错误");
 //            map.put("msg", "用户名密码错误");
 //            map.put("msg", "用户名密码错误");
             return "login";
         }
 
-        String pwd = utils.MD5encode(username+password);
-        if(userService.setUserByNameAndPassword(username,pwd)){
+        String pwd = utils.MD5encode(username + password);
+        if (userService.setUserByNameAndPassword(username, pwd)) {
             try {
                 response.sendRedirect("/user/logout");
             } catch (IOException e) {

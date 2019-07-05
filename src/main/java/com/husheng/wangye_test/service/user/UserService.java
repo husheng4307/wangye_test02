@@ -8,7 +8,7 @@ public interface UserService {
 
     public UserDomain getUserById(Integer id);
 
-    public UserDomain getUserByNameAndPassword(String username ,String password);
+    public UserDomain getUserByNameAndPassword(String username, String password);
 
     public boolean setUserByNameAndPassword(String username, String pwd);
 }
