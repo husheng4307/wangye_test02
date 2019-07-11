@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -41,6 +41,7 @@
                 </a>
             </li>
             <li class="nav-item">
+                <div shiro:hasPermission="user:student">
                 <a class="nav-link" th:href="@{/studentInfo}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -50,6 +51,7 @@
                     </svg>
                     数学学生
                 </a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">
